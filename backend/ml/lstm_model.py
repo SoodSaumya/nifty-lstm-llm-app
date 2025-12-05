@@ -2,9 +2,9 @@ import numpy as np
 import pandas as pd
 from pathlib import Path
 from sklearn.preprocessing import MinMaxScaler
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import LSTM, Dense
-from tensorflow.keras.callbacks import EarlyStopping
+#from tensorflow.keras.models import Sequential
+#from tensorflow.keras.layers import LSTM, Dense
+#from tensorflow.keras.callbacks import EarlyStopping
 
 DATA_PATH = Path(__file__).resolve().parent.parent / "data" / "NIFTY50_10yearsdata1.csv"
 
@@ -81,3 +81,6 @@ class LSTMPredictor:
             "dates": [d.strftime("%Y-%m-%d") for d in recent.index],
             "prices": recent["Close"].tolist()
         }
+class LSTMPredictor:
+    def predict(self, data):
+        return {"prediction": "Model disabled on Render free tier"}
