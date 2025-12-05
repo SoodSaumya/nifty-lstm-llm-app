@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Auth.css";
 import { useNavigate } from "react-router-dom";
 
-const API = "http://127.0.0.1:9000/auth/signup";
+const API = "https://nifty-lstm-llm-app.onrender.com/auth/signup";
 
 export default function Signup() {
   const navigate = useNavigate();
@@ -18,21 +18,24 @@ export default function Signup() {
     setError("");
     setMsg("");
 
-    const res = await fetch(API, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email, password }),
-    });
+    try {
+      const res = await fetch(API, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, password }),
+      });
 
-    const data = await res.json();
+      const data = await res.json();
 
-    if (!res.ok) {
-      setError(data.detail);
-      return;
+      if (!res.ok) {
+        setError(data.detail || "Signup failed");
+        return;
+      }
+
+      setMsg("User added successfully!");
+    } catch (err) {
+      setError("Server unreachable");
     }
-
-    setMsg("Signup successful! Please login.");
-    setTimeout(() => navigate("/"), 1500);
   }
 
   return (

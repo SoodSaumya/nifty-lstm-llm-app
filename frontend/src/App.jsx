@@ -22,7 +22,8 @@ function App() {
     let ws;
 
     try {
-      ws = new WebSocket("ws://127.0.0.1:9000/ws/prices");
+    ws = new WebSocket("wss://nifty-lstm-llm-app.onrender.com/ws/prices");
+
 
       ws.onopen = () => {
         console.log("✅ WebSocket connected");

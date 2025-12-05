@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./Auth.css";
 import { useNavigate } from "react-router-dom";
 
-const API = "http://127.0.0.1:9000/auth/login";
+const API = "https://nifty-lstm-llm-app.onrender.com/auth/login";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ export default function Login() {
       const data = await res.json();
 
       if (!res.ok) {
-        setError(data.detail);
+        setError(data.detail || "Login failed");
         return;
       }
 
@@ -34,7 +34,7 @@ export default function Login() {
 
       navigate("/app");
     } catch (err) {
-      setError("Something went wrong");
+      setError("Server unreachable");
     }
   }
 

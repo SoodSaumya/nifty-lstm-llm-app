@@ -68,11 +68,17 @@ app = FastAPI(title="NIFTY LSTM + LLM API")
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://stock-savvy-i2oj.vercel.app",
+        "https://nifty-lstm-llm-app.onrender.com",
+        "http://localhost:5173",
+        "*"
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 
 # =============================
