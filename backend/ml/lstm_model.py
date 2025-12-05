@@ -17,6 +17,7 @@ class LSTMPredictor:
         self.time_step = time_step
         self.predict_days = predict_days
         df = pd.read_csv(DATA_PATH)
+        df.columns = df.columns.str.strip()
         df["Date"] = pd.to_datetime(df["Date"])
         df.set_index("Date", inplace=True)
         self.df = df
