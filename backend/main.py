@@ -144,9 +144,8 @@ async def on_startup():
 # 7. LSTM + Sentiment Model
 # =============================
 lstm = LSTMPredictor(time_step=60, predict_days=7)
-print("Training LSTM model, please wait...")
-lstm.train(epochs=30)
-print("LSTM trained.")
+print("LSTM predictor loaded (no training on Render).")
+
 
 sentiment_df = load_sentiment_data()
 print("Loaded sentiment data.")

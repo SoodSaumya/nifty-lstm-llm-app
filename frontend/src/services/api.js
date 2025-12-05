@@ -1,7 +1,7 @@
 // frontend/src/services/api.js
 
 // 👇 BACKEND URL – must match uvicorn (127.0.0.1:9000)
-const API_BASE = "http://127.0.0.1:9000";
+const API_BASE = "https://nifty-lstm-llm-app.onrender.com";
 
 export async function getPrediction() {
   try {
